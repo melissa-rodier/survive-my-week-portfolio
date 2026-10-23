@@ -141,6 +141,24 @@ footer{margin-top:56px;color:var(--on-desk-muted);font-size:15px}
 .real .num{font-family:var(--display);font-weight:800;font-size:2.4rem;line-height:1}
 .row{display:flex;flex-wrap:wrap;gap:10px}
 
+.beyond{margin-top:64px}
+.beyond h2{margin:0;font-family:var(--display);font-weight:800;font-size:clamp(1.8rem,3.6vw,2.8rem);letter-spacing:-0.02em}
+.beyond > p{margin:10px 0 24px;color:var(--on-desk-muted);max-width:60ch;font-size:1.1rem}
+.stickers{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.sticker{border-radius:18px;padding:16px 18px;color:#1B1B2F;box-shadow:0 5px 0 rgba(0,0,0,.25)}
+.sticker:nth-child(3n+1){transform:rotate(-0.8deg)} .sticker:nth-child(3n){transform:rotate(0.8deg)}
+.sticker b{display:block;font-family:var(--display);font-weight:800;font-size:1.7rem;line-height:1.05;margin-bottom:6px}
+.sticker span{font-size:16px;line-height:1.4}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:22px}
+.pathbox{background:var(--card);color:var(--ink);border-radius:22px;padding:22px;box-shadow:0 6px 0 rgba(0,0,0,.25)}
+.pathbox h3{margin:0 0 12px;font-family:var(--display);font-size:1.1rem}
+.pathbox p{margin:0 0 20px;color:var(--muted)}
+.path{margin:0;padding:0;list-style:none;display:grid;gap:12px}
+.path li{display:grid;grid-template-columns:112px minmax(0,1fr);gap:12px}
+.path .yr{font-family:var(--display);font-weight:700;font-size:12px;color:var(--muted);padding-top:4px}
+.path b{display:block}
+.path span{color:var(--muted);font-size:16px}
+@media (prefers-reduced-motion: reduce){ .sticker{transform:none!important} }
 /* quick */
 .quick .item{border-top:2px solid var(--line);padding:14px 0}
 .quick .item b{font-family:var(--display)}
@@ -150,7 +168,7 @@ footer{margin-top:56px;color:var(--on-desk-muted);font-size:15px}
 <body>
 <div class="wrap">
   <header class="top">
-    <div class="brand">Melissa Rodier<span>Client success and growth marketing, Philadelphia</span></div>
+    <div class="brand">Melissa Rodier<span>Client Success and Growth Marketing, Philadelphia</span></div>
     <div class="actions">
       <button class="btn ghost" id="quickBtn" type="button">Skip to the quick version</button>
       <a class="btn sun" href="mailto:melissa.a.rodier@gmail.com">Email me</a>
@@ -162,6 +180,7 @@ footer{margin-top:56px;color:var(--on-desk-muted);font-size:15px}
     <div>
       <h1>Can you survive a week in my shoes?</h1>
       <p>Five days, five real problems from my job, five tiny games. Catch the error, fix the account, move the money, work the network, calm the client. Every game ends with what actually happened.</p>
+      <p>Right now I run a book of 25+ client brands (about $480K a year) with $1.5M+ in annual client ad spend. Ten years in, this is what the job looks like up close.</p>
     </div>
     <div class="tally" aria-live="polite"><b id="tally">0 / 15</b>stars earned this week</div>
   </section>
@@ -169,6 +188,34 @@ footer{margin-top:56px;color:var(--on-desk-muted);font-size:15px}
   <div class="week" id="week"></div>
 
   <div class="weekend" id="weekend"></div>
+
+  <section class="beyond" aria-labelledby="beyondTitle">
+    <h2 id="beyondTitle">Beyond this week</h2>
+    <p>Five days can’t fit ten years. Here’s more of what I’ve built along the way.</p>
+    <div class="stickers" id="stickers"></div>
+    <div class="cols">
+      <div class="pathbox">
+        <h3>The path here</h3>
+        <ol class="path">
+          <li><span class="yr">2025 to now</span><div><b>beMarketing Solutions</b><span>Senior Account Manager</span></div></li>
+          <li><span class="yr">2023 to 2025</span><div><b>Destiny Marketing Solutions</b><span>Client Success Lead and Digital Marketing Strategist</span></div></li>
+          <li><span class="yr">2022 to 2025</span><div><b>Freelance</b><span>Digital Marketing Consultant</span></div></li>
+          <li><span class="yr">2020 to 2022</span><div><b>Dutch Label Shop</b><span>Marketing Operations Manager and Digital Project Manager</span></div></li>
+          <li><span class="yr">2018 to 2019</span><div><b>LeagueSide</b><span>Campaign Strategist and Operations Manager</span></div></li>
+          <li><span class="yr">2016 to 2017</span><div><b>Woden</b><span>Account Manager and Associate</span></div></li>
+        </ol>
+      </div>
+      <div class="pathbox">
+        <h3>Tools I live in</h3>
+        <p>HubSpot and Klaviyo (certified in both), Google Ads, Meta Ads, LinkedIn Ads, Sales Navigator, GoHighLevel, Salesforce, ServiceTitan, Google Analytics, Looker Studio and ClickUp.</p>
+        <h3>How I work</h3>
+        <p>I catch problems before the client does, test and pivot fast, and turn data into decisions people can actually follow. English degree from Drexel, which explains the storytelling.</p>
+        <h3>Let’s talk</h3>
+        <p>Would love to connect! melissa.a.rodier@gmail.com</p>
+        <div class="row"><a class="btn sun" href="mailto:melissa.a.rodier@gmail.com">Email me</a><a class="btn" style="box-shadow:inset 0 0 0 2px var(--ink)" href="https://linkedin.com/in/melissa-rodier" target="_blank" rel="noopener">LinkedIn</a></div>
+      </div>
+    </div>
+  </section>
 
   <footer>Melissa Rodier · melissa.a.rodier@gmail.com · Every story here is real work. Client names are kept private.</footer>
 </div>
@@ -483,11 +530,25 @@ footer{margin-top:56px;color:var(--on-desk-muted);font-size:15px}
     modal.hidden = false; document.body.style.overflow = 'hidden'; winTitle.textContent = 'The quick version'; setHud([]);
     stage.innerHTML = '<div class="quick"><h3>Melissa Rodier, no games required</h3><p class="rules">10 years in B2B marketing and client success. Right now I run a book of 25+ client brands worth about $480K a year, with $1.5M+ in annual client ad spend.</p>' +
       DAYS.map(function(d){ return '<div class="item"><b>' + esc(d.title) + '</b><div class="big" style="font-size:1.6rem;margin:6px 0">' + esc(d.real.num) + ' <span class="rules" style="font-family:var(--body);font-size:16px;font-weight:400">' + esc(d.real.unit) + '</span></div><p style="margin:0">' + esc(d.real.text) + '</p></div>'; }).join('') +
+      '<div class="item"><b>More highlights</b>' + HIGHLIGHTS.map(function(h){ return '<p style="margin:8px 0 0"><strong>' + esc(h[0]) + '</strong> ' + esc(h[1]) + '</p>'; }).join('') + '</div>' +
       '<div class="item"><b>The path here</b><p style="margin:6px 0 0">beMarketing Solutions, Senior Account Manager (2025 to now). Destiny Marketing Solutions, Client Success Lead and Digital Marketing Strategist (2023 to 2025). Freelance Digital Marketing Consultant (2022 to 2025). Dutch Label Shop, Marketing Operations Manager (2020 to 2022). LeagueSide, Campaign Strategist and Operations Manager (2018 to 2019). Woden, Account Manager (2016 to 2017).</p></div>' +
       '<div class="item"><b>Let’s talk</b><p style="margin:6px 0 12px">Would love to connect! melissa.a.rodier@gmail.com</p><div class="row"><a class="btn sun" href="mailto:melissa.a.rodier@gmail.com">Email me</a><a class="btn" style="box-shadow:inset 0 0 0 2px var(--ink)" href="https://linkedin.com/in/melissa-rodier" target="_blank" rel="noopener">LinkedIn</a></div></div></div>';
     document.getElementById('closeBtn').focus();
   }
   document.getElementById('quickBtn').onclick = openQuick;
+
+  var HIGHLIGHTS = [
+    ['171%', 'month-over-month jump in signed partner contracts at LeagueSide'],
+    ['5x', 'more monthly conversions for a multi-brand HVAC group'],
+    ['$1.5M+', 'in annual client ad spend overseen'],
+    ['~$480K', 'annual book across 25+ client brands'],
+    ['15+', 'contractors across 6 languages and 4 continents at Dutch Label Shop'],
+    ['Signed', 'a phased Good, Better, Best expansion with an existing client'],
+    ['1 chapter', 'written for Woden\u2019s Story Guide on narrative-driven demand gen'],
+    ['15+ clients', 'in my client success portfolio at Destiny, plus a junior AM I managed']
+  ];
+  var STICKER_COLORS = ['#FFD23F','#3DDC97','#5AA9FF','#FF8FB4','#B9A6FF'];
+  document.getElementById('stickers').innerHTML = HIGHLIGHTS.map(function(h, i){ return '<div class="sticker" style="background:' + STICKER_COLORS[i % STICKER_COLORS.length] + '"><b>' + esc(h[0]) + '</b><span>' + esc(h[1]) + '</span></div>'; }).join('');
 
   renderWeek();
   if(location.hash.replace('#','') === 'quick') openQuick();
