@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A Week in My Shoes: Melissa Rodier</title>
+<meta name="description" content="Can you survive a week in Melissa Rodier’s shoes? Five mini-games built from real client work, each ending with what actually happened.">
+<meta property="og:title" content="A Week in My Shoes: Melissa Rodier">
+<meta property="og:description" content="Five days, five real problems, five tiny games. Can you survive a week in my shoes?">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👟</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --desk:#0F4C4A; --desk2:#13615E; --card:#FFFFFF; --ink:#1B1B2F; --muted:#555A70; --line:#E3E5EE; --soft:#F3F4F8;
+  --pink:#FF4F8B; --sun:#FFD23F; --mint:#3DDC97; --sky:#5AA9FF; --grape:#8E6CFF; --on-desk:#FFFFFF; --on-desk-muted:#CFE7E5;
+  --display:'Unbounded', 'Arial Black', system-ui, sans-serif;
+  --body:'Atkinson Hyperlegible', 'Segoe UI', system-ui, sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --desk:#0A2E2D; --desk2:#0F3C3A; --card:#1C2133; --ink:#F2F3F8; --muted:#B9BDD0; --line:#30364D; --soft:#252B40; color-scheme:dark; }
+}
+:root[data-theme="dark"]{ --desk:#0A2E2D; --desk2:#0F3C3A; --card:#1C2133; --ink:#F2F3F8; --muted:#B9BDD0; --line:#30364D; --soft:#252B40; color-scheme:dark; }
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100vh;font-family:var(--body);font-size:18px;line-height:1.55;color:var(--on-desk);
+  background-color:var(--desk);background-image:radial-gradient(rgba(255,255,255,.07) 1.5px, transparent 1.6px);background-size:22px 22px}
+button{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px;border-radius:10px}
+.wrap{max-width:1240px;margin:0 auto;padding:18px 20px 48px}
+.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px}
+.brand{font-family:var(--display);font-weight:700;font-size:18px}
+.brand span{display:block;font-family:var(--body);font-weight:400;font-size:15px;color:var(--on-desk-muted)}
+.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 20px;border-radius:14px;border:0;font-family:var(--display);font-weight:700;font-size:14px;cursor:pointer;text-decoration:none;
+  background:var(--card);color:var(--ink);box-shadow:0 4px 0 rgba(0,0,0,.25);transition:transform .08s}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.25)}
+.btn.sun{background:var(--sun);color:#1B1B2F}
+.btn.pink{background:var(--pink);color:#FFFFFF}
+.btn.ghost{background:transparent;color:var(--on-desk);box-shadow:inset 0 0 0 2px rgba(255,255,255,.6)}
+.hero{padding:56px 0 36px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px}
+.hero h1{margin:0;font-family:var(--display);font-weight:800;font-size:clamp(2.1rem,5.4vw,4.4rem);line-height:1.02;letter-spacing:-0.03em;max-width:13ch}
+.hero p{margin:18px 0 0;max-width:56ch;font-size:1.15rem;color:var(--on-desk-muted)}
+.tally{background:var(--sun);color:#1B1B2F;border-radius:20px;padding:16px 22px;box-shadow:0 6px 0 rgba(0,0,0,.25);transform:rotate(2deg)}
+.tally b{display:block;font-family:var(--display);font-size:2.2rem;line-height:1}
+.week{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
+.day{position:relative;background:var(--card);color:var(--ink);border-radius:22px;padding:20px;display:flex;flex-direction:column;gap:10px;box-shadow:0 6px 0 rgba(0,0,0,.25)}
+.day:nth-child(odd){transform:rotate(-0.6deg)} .day:nth-child(even){transform:rotate(0.6deg)}
+.day .dname{font-family:var(--display);font-weight:800;font-size:1.05rem;padding:6px 12px;border-radius:10px;align-self:flex-start;color:#1B1B2F}
+.day h2{margin:0;font-family:var(--display);font-weight:700;font-size:1.15rem;line-height:1.2}
+.day p{margin:0;color:var(--muted);font-size:16px;flex:1}
+.stars{font-size:22px;letter-spacing:2px;color:#E2A400}
+.stars .off{color:var(--line)}
+.day .btn{background:var(--ink);color:var(--card)}
+.weekend{margin-top:16px;background:var(--desk2);border-radius:22px;padding:22px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.25)}
+.weekend h2{margin:0;font-family:var(--display);font-size:1.3rem}
+.weekend p{margin:6px 0 0;color:var(--on-desk-muted);max-width:60ch}
+footer{margin-top:56px;color:var(--on-desk-muted);font-size:15px}
+
+/* game window */
+.modal{position:fixed;inset:0;z-index:20;background:rgba(5,20,20,.7);display:flex;align-items:center;justify-content:center;padding:calc(env(safe-area-inset-top,0px) + 12px) 12px calc(env(safe-area-inset-bottom,0px) + 12px)}
+.modal[hidden]{display:none}
+.win{width:min(860px,100%);max-height:100%;overflow:auto;background:var(--card);color:var(--ink);border-radius:24px;box-shadow:0 10px 0 rgba(0,0,0,.3)}
+.winbar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;padding:14px 18px;border-bottom:2px solid var(--line);position:sticky;top:0;background:var(--card);z-index:2}
+.winbar .t{font-family:var(--display);font-weight:700;font-size:15px}
+.hud{display:flex;flex-wrap:wrap;gap:8px}
+.pill{font-family:var(--display);font-weight:700;font-size:13px;padding:6px 12px;border-radius:999px;background:var(--soft)}
+.pill.warn{background:var(--pink);color:#FFFFFF}
+.x{width:44px;height:44px;border-radius:12px;border:0;background:var(--soft);cursor:pointer;font-size:20px;color:var(--ink)}
+.stage{padding:22px}
+.stage h3{margin:0 0 8px;font-family:var(--display);font-size:1.4rem;line-height:1.2}
+.stage .rules{color:var(--muted);margin:0 0 18px}
+.dark-btn{background:var(--ink);color:var(--card)}
+
+/* monday */
+.report{border:2px solid var(--line);border-radius:18px;overflow:hidden}
+.report .rh{display:flex;justify-content:space-between;padding:12px 16px;background:var(--soft);font-weight:700}
+.rrow{display:flex;justify-content:space-between;align-items:center;width:100%;min-height:56px;padding:0 16px;border:0;border-top:2px solid var(--line);background:transparent;cursor:pointer;text-align:left;font-size:18px;color:var(--ink)}
+.rrow:hover{background:var(--soft)}
+.rrow b{font-family:var(--display);font-size:18px}
+.rrow.right{background:#D7F8E8;color:#1B1B2F}
+.rrow.wrong{animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.feedback{min-height:28px;margin-top:12px;font-weight:700}
+
+/* tuesday */
+.field{position:relative;height:min(420px,56vh);border-radius:18px;background:linear-gradient(var(--soft), var(--card));overflow:hidden;border:2px solid var(--line)}
+.field .floor{position:absolute;left:0;right:0;bottom:0;height:6px;background:var(--mint)}
+.q{position:absolute;top:0;left:0;white-space:nowrap;padding:8px 14px;min-height:40px;border-radius:12px;border:2px solid var(--ink);background:var(--card);color:var(--ink);font-weight:700;font-size:16px;cursor:pointer;box-shadow:0 3px 0 var(--ink)}
+.q.locked{background:#E9E9EF;color:#55586A;border-style:dashed}
+.q.locked::before{content:"🔒 "}
+.pop{position:absolute;font-family:var(--display);font-weight:700;font-size:14px;pointer-events:none;animation:rise .9s forwards}
+@keyframes rise{to{transform:translateY(-36px);opacity:0}}
+
+/* wednesday */
+.camps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.camp{border:2px solid var(--line);border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:8px}
+.camp h4{margin:0;font-family:var(--display);font-size:15px}
+.camp .cpl{font-family:var(--display);font-weight:800;font-size:1.6rem}
+.camp .cpl.bad{color:#D6336C}
+.blocks{display:flex;flex-wrap:wrap;gap:4px;min-height:24px}
+.blk{width:20px;height:20px;border-radius:6px;background:var(--sun);box-shadow:inset 0 -3px 0 rgba(0,0,0,.2)}
+.ctl{display:flex;gap:8px}
+.ctl button{flex:1;min-height:44px;border-radius:12px;border:2px solid var(--ink);background:var(--card);color:var(--ink);font-family:var(--display);font-weight:800;font-size:20px;cursor:pointer}
+.ctl button:disabled{opacity:.35;cursor:not-allowed}
+.event{min-height:30px;margin:12px 0;font-weight:700;color:#D6336C}
+.big{font-family:var(--display);font-weight:800;font-size:2rem;line-height:1}
+
+/* thursday */
+.contact-card{border:2px solid var(--line);border-radius:18px;padding:18px;margin-bottom:14px}
+.contact-card .who{font-family:var(--display);font-weight:700;font-size:1.1rem}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+.opt{min-height:52px;border-radius:14px;border:2px solid var(--ink);background:var(--card);color:var(--ink);font-weight:700;cursor:pointer;padding:8px 12px;text-align:left}
+.opt:hover{background:var(--soft)}
+.timerbar{height:8px;border-radius:99px;background:var(--soft);overflow:hidden;margin:10px 0 0}
+.timerbar div{height:100%;background:var(--pink);width:100%}
+
+/* friday */
+.chat{display:flex;flex-direction:column;gap:10px;margin-bottom:14px}
+.bubble{max-width:85%;padding:12px 16px;border-radius:18px;font-size:17px}
+.bubble.them{align-self:flex-start;background:var(--soft);border-bottom-left-radius:4px}
+.bubble.me{align-self:flex-end;background:var(--grape);color:#FFFFFF;border-bottom-right-radius:4px}
+.trust{display:flex;align-items:center;gap:12px;margin-bottom:14px;font-weight:700}
+.trust .bar{flex:1;height:14px;border-radius:99px;background:var(--soft);overflow:hidden}
+.trust .bar div{height:100%;background:var(--mint);transition:width .4s}
+.reply{display:block;width:100%;text-align:left;margin-bottom:8px;min-height:52px;padding:10px 14px;border-radius:14px;border:2px solid var(--ink);background:var(--card);color:var(--ink);cursor:pointer;font-size:16px}
+.reply:hover{background:var(--soft)}
+
+/* results */
+.result{display:flex;flex-direction:column;gap:14px}
+.result .stars{font-size:40px}
+.real{background:var(--soft);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:6px}
+.real .lbl{font-family:var(--display);font-weight:700;font-size:13px;color:var(--muted)}
+.real .num{font-family:var(--display);font-weight:800;font-size:2.4rem;line-height:1}
+.row{display:flex;flex-wrap:wrap;gap:10px}
+
+/* quick */
+.quick .item{border-top:2px solid var(--line);padding:14px 0}
+.quick .item b{font-family:var(--display)}
+@media (prefers-reduced-motion: reduce){ .day,.tally{transform:none!important} .pop{animation:none;opacity:0} .rrow.wrong{animation:none} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">Melissa Rodier<span>Client success and growth marketing, Philadelphia</span></div>
+    <div class="actions">
+      <button class="btn ghost" id="quickBtn" type="button">Skip to the quick version</button>
+      <a class="btn sun" href="mailto:melissa.a.rodier@gmail.com">Email me</a>
+      <a class="btn" href="https://linkedin.com/in/melissa-rodier" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div>
+      <h1>Can you survive a week in my shoes?</h1>
+      <p>Five days, five real problems from my job, five tiny games. Catch the error, fix the account, move the money, work the network, calm the client. Every game ends with what actually happened.</p>
+    </div>
+    <div class="tally" aria-live="polite"><b id="tally">0 / 15</b>stars earned this week</div>
+  </section>
+
+  <div class="week" id="week"></div>
+
+  <div class="weekend" id="weekend"></div>
+
+  <footer>Melissa Rodier · melissa.a.rodier@gmail.com · Every story here is real work. Client names are kept private.</footer>
+</div>
+
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="winTitle">
+  <div class="win">
+    <div class="winbar"><span class="t" id="winTitle"></span><div class="hud" id="hud"></div><button class="x" id="closeBtn" type="button" aria-label="Back to the week">✕</button></div>
+    <div class="stage" id="stage"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function rand(a,b){ return a + Math.floor(Math.random()*(b-a+1)); }
+  function shuffle(a){ a = a.slice(); for(var i=a.length-1;i>0;i--){ var j = Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function money(n){ return '$' + Math.round(n).toLocaleString('en-US'); }
+  function starStr(n){ var s=''; for(var i=0;i<3;i++) s += i < n ? '★' : '<span class="off">★</span>'; return s; }
+
+  var best = {};
+  try{ best = JSON.parse(localStorage.getItem('week-stars') || '{}') || {}; }catch(e){ best = {}; }
+  function saveBest(){ try{ localStorage.setItem('week-stars', JSON.stringify(best)); }catch(e){} }
+
+  var modal = document.getElementById('modal'), stage = document.getElementById('stage'), hud = document.getElementById('hud'), winTitle = document.getElementById('winTitle');
+  var cleanup = null, lastFocus = null;
+  function setHud(items){ hud.innerHTML = items.map(function(x){ return '<span class="pill' + (x.warn ? ' warn' : '') + '">' + esc(x.t) + '</span>'; }).join(''); }
+
+  /* ================= MONDAY ================= */
+  function monday(done){
+    var round = 0, caught = 0, timer = null, left = 0;
+    function makeRound(i){
+      if(i === 0){ var g=rand(40,80), m=rand(20,40), l=rand(10,30), tot=g+m+l, off = Math.random()<.5 ? 30 : -30;
+        var rows = shuffle([['Google Ads leads', g],['Meta leads', m],['Local Services leads', l]]); rows.push(['Total leads', tot+off]); return {label:'Roofing client, September report', rows:rows, wrong:3, why:'The channels only add up to ' + tot + '. The total was off by 30.'}; }
+      if(i === 1){ var sp=rand(30,60)*100, ld=rand(40,80), cpl=Math.round(sp/ld), shown=cpl + (Math.random()<.5 ? 25 : -20);
+        var r = [['Ad spend', money(sp)],['Leads', ld],['Cost per lead', money(shown)],['Calls answered', rand(85,96) + '%']]; var w = 2;
+        return {label:'Plumbing client, weekly snapshot', rows:r, wrong:w, why:money(sp) + ' across ' + ld + ' leads is ' + money(cpl) + ' per lead, not ' + money(shown) + '.'}; }
+      var cl=rand(25,45)*10, cv=Math.round(cl*rand(8,14)/100), rate=(cv/cl*100);
+      return {label:'HVAC client, month to date', rows:[['Clicks', cl],['Conversions', cv],['Conversion rate', (rate/10).toFixed(1) + '%'],['Cost per click', '$' + rand(8,15) + '.' + rand(10,99)]], wrong:2, why:cv + ' conversions from ' + cl + ' clicks is ' + rate.toFixed(1) + '%. Someone slipped a decimal.'};
+    }
+    function intro(){
+      setHud([]);
+      stage.innerHTML = '<h3>Catch it before the client does</h3><p class="rules">Three reports are about to go out. Each one has exactly one wrong number. Tap it before the timer runs out. Wrong taps cost you 3 seconds.</p><button class="btn dark-btn" id="go" type="button">Start Monday</button>';
+      document.getElementById('go').onclick = next; document.getElementById('go').focus();
+    }
+    function next(){
+      if(round >= 3) return finish();
+      var R = makeRound(round); left = 12;
+      stage.innerHTML = '<h3>Report ' + (round+1) + ' of 3</h3><p class="rules">Find the number that’s wrong.</p><div class="report"><div class="rh"><span>' + esc(R.label) + '</span><span>Draft</span></div>' +
+        R.rows.map(function(row, i){ return '<button type="button" class="rrow" data-i="' + i + '"><span>' + esc(row[0]) + '</span><b>' + esc(row[1]) + '</b></button>'; }).join('') + '</div><div class="feedback" id="fb" aria-live="polite"></div>';
+      var locked = false;
+      stage.querySelectorAll('.rrow').forEach(function(b){ b.onclick = function(){
+        if(locked) return; var i = +b.getAttribute('data-i');
+        if(i === R.wrong){ locked = true; caught++; b.classList.add('right'); document.getElementById('fb').textContent = 'Caught it! ' + R.why; clearInterval(timer); setTimeout(function(){ round++; next(); }, 1600); }
+        else { b.classList.remove('wrong'); void b.offsetWidth; b.classList.add('wrong'); left = Math.max(0, left - 3); tick(true); }
+      }; });
+      function tick(noDec){ if(!noDec) left--; setHud([{t:'Report ' + (round+1) + '/3'},{t:'Caught ' + caught},{t:left + 's left', warn:left<=4}]);
+        if(left <= 0){ clearInterval(timer); locked = true; var wb = stage.querySelector('[data-i="' + R.wrong + '"]'); wb.classList.add('right'); document.getElementById('fb').textContent = 'It went out to the client. ' + R.why; setTimeout(function(){ round++; next(); }, 2000); } }
+      tick(true); timer = setInterval(tick, 1000);
+    }
+    function finish(){ done(Math.max(1, caught), 'You caught ' + caught + ' of 3 errors before they reached a client.'); }
+    intro();
+    return function(){ clearInterval(timer); };
+  }
+
+  /* ================= TUESDAY ================= */
+  function tuesday(done){
+    var good = ['emergency plumber near me','water heater repair','burst pipe repair','clogged drain service','plumber open now','leaking toilet repair','sewer line repair','24 hour plumber','slab leak repair','garbage disposal repair','tankless water heater install','drain backing up'];
+    var junk = ['plumbing jobs hiring','how to become a plumber','diy drain cleaner','plumber salary','free plumbing course','plumbing school near me','pipe wrench set','toilet paper bulk','plumbing memes','apprentice plumber pay'];
+    var chips = [], spend = 706, conv = 1, t = 0, raf = null, last = 0, spawnIn = 0, running = false, field;
+    function intro(){
+      setHud([]);
+      stage.innerHTML = '<h3>The diagnosis</h3><p class="rules">This plumbing account is paying $706 per job booked. Searches are falling in. Tap the junk ones to block them as negative keywords. Let real repair searches land. Some good searches are stuck behind a broken filter 🔒, so tap those to unblock them. Don’t block the good ones! Get cost per job as low as you can in 30 seconds.</p><button class="btn dark-btn" id="go" type="button">Start Tuesday</button>';
+      document.getElementById('go').onclick = start; document.getElementById('go').focus();
+    }
+    function hudNow(){ setHud([{t:'Cost per job ' + money(spend/conv), warn: spend/conv > 150},{t:'Jobs ' + (conv-1)},{t:Math.max(0, Math.ceil(30 - t)) + 's left', warn: t > 25}]); }
+    function pop(x, y, text, col){ var p = document.createElement('div'); p.className = 'pop'; p.style.left = x + 'px'; p.style.top = y + 'px'; p.style.color = col; p.textContent = text; field.appendChild(p); setTimeout(function(){ p.remove(); }, 900); }
+    function spawn(){
+      var isGood = Math.random() < 0.55, locked = isGood && Math.random() < 0.3;
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'q' + (locked ? ' locked' : '');
+      b.textContent = isGood ? good[rand(0, good.length-1)] : junk[rand(0, junk.length-1)];
+      field.appendChild(b);
+      var maxX = Math.max(10, field.clientWidth - b.offsetWidth - 10);
+      var c = {el:b, x:rand(10, maxX), y:-44, v:(reduce ? 45 : 60) + t*1.6, good:isGood, locked:locked, dead:false};
+      b.style.transform = 'translate(' + c.x + 'px,' + c.y + 'px)';
+      b.onclick = function(){
+        if(c.dead) return;
+        if(c.locked){ c.locked = false; b.classList.remove('locked'); pop(c.x, c.y, 'Unblocked!', '#13A26B'); return; }
+        c.dead = true; b.remove();
+        if(c.good) pop(c.x, c.y, 'Oops, that was a real lead', '#D6336C'); else pop(c.x, c.y, 'Blocked', '#13A26B');
+      };
+      chips.push(c);
+    }
+    function frame(now){
+      if(!running) return;
+      var dt = Math.min(0.05, (now - last)/1000); last = now; t += dt; spawnIn -= dt;
+      if(spawnIn <= 0){ spawn(); spawnIn = Math.max(0.5, 1.0 - t*0.017); }
+      var floor = field.clientHeight - 46;
+      chips.forEach(function(c){
+        if(c.dead) return; c.y += c.v*dt; c.el.style.transform = 'translate(' + c.x + 'px,' + c.y + 'px)';
+        if(c.y >= floor){ c.dead = true; c.el.remove();
+          if(c.good && !c.locked){ spend += 40; conv++; pop(c.x, floor - 10, '+1 job', '#13A26B'); }
+          else if(c.good && c.locked){ pop(c.x, floor - 10, 'Lead lost to the filter', '#D6336C'); }
+          else { spend += 80; pop(c.x, floor - 10, 'Wasted $80', '#D6336C'); } }
+      });
+      chips = chips.filter(function(c){ return !c.dead; });
+      hudNow();
+      if(t >= 30){ running = false; return finish(); }
+      raf = requestAnimationFrame(frame);
+    }
+    function start(){
+      stage.innerHTML = '<div class="field" id="field"><div class="floor"></div></div><p class="rules" style="margin-top:12px">Junk: tap to block. 🔒 Locked good search: tap to unblock. Real repair search: let it land.</p>';
+      field = document.getElementById('field'); running = true; last = performance.now(); hudNow(); raf = requestAnimationFrame(frame);
+    }
+    function finish(){ var cpa = spend/conv, s = cpa < 100 ? 3 : (cpa < 150 ? 2 : 1); done(s, 'You got cost per job from $706 down to ' + money(cpa) + ', with ' + (conv-1) + ' jobs booked.'); }
+    intro();
+    return function(){ running = false; cancelAnimationFrame(raf); };
+  }
+
+  /* ================= WEDNESDAY ================= */
+  function wednesday(done){
+    var camps = [
+      {id:'aw', name:'Awareness video', blocks:6, cpl:500, lo:470, hi:540, spend:0, leads:0},
+      {id:'lg', name:'Lead gen ads', blocks:2, cpl:76, lo:62, hi:92, spend:0, leads:0},
+      {id:'rt', name:'Retargeting', blocks:2, cpl:120, lo:105, hi:140, spend:0, leads:0}
+    ];
+    var pool = 0, t = 0, timer = null, ev1 = false, ev2 = false, msg = '';
+    function intro(){
+      setHud([]);
+      stage.innerHTML = '<h3>The fast pivot</h3><p class="rules">This client is paying $211 per lead and wants proof the money works. You have 10 budget blocks across three campaigns. Each block spends $10 a second. Watch the live cost per lead and move the money where it works. Things will change mid-week. You’ve got 30 seconds.</p><button class="btn dark-btn" id="go" type="button">Start Wednesday</button>';
+      document.getElementById('go').onclick = start; document.getElementById('go').focus();
+    }
+    function totals(){ var s=0, l=0; camps.forEach(function(c){ s += c.spend; l += c.leads; }); return {s:s, l:l, cpl: l ? s/l : 0}; }
+    function render(){
+      var T = totals();
+      stage.innerHTML = '<div class="row" style="justify-content:space-between;align-items:flex-end;margin-bottom:12px"><div><div class="rules" style="margin:0">Blended cost per lead</div><div class="big">' + (T.l ? money(T.cpl) : '—') + '</div></div><div><div class="rules" style="margin:0">Unassigned blocks</div><div class="blocks">' + new Array(pool+1).join('<span class="blk"></span>') + (pool ? '' : '<span class="rules" style="margin:0">none</span>') + '</div></div></div>' +
+        '<div class="event" aria-live="polite">' + esc(msg) + '</div><div class="camps">' +
+        camps.map(function(c){ return '<div class="camp"><h4>' + esc(c.name) + '</h4><div class="rules" style="margin:0">Cost per lead right now</div><div class="cpl' + (c.cpl > 200 ? ' bad' : '') + '">' + money(c.cpl) + '</div><div class="blocks" aria-label="' + c.blocks + ' blocks">' + new Array(c.blocks+1).join('<span class="blk"></span>') + '</div><div class="rules" style="margin:0">' + c.leads.toFixed(1) + ' leads so far</div><div class="ctl"><button type="button" data-c="' + c.id + '" data-d="-1" aria-label="Remove a block from ' + esc(c.name) + '"' + (c.blocks ? '' : ' disabled') + '>−</button><button type="button" data-c="' + c.id + '" data-d="1" aria-label="Add a block to ' + esc(c.name) + '"' + (pool ? '' : ' disabled') + '>+</button></div></div>'; }).join('') + '</div>';
+      setHud([{t:Math.max(0, Math.ceil(30 - t)) + 's left', warn: t > 25},{t:'Leads ' + T.l.toFixed(0)}]);
+    }
+    stage.addEventListener('click', onClick);
+    function onClick(e){ var b = e.target.closest('[data-c]'); if(!b || !timer) return; var c = camps.filter(function(x){ return x.id === b.getAttribute('data-c'); })[0], d = +b.getAttribute('data-d');
+      if(d < 0 && c.blocks > 0){ c.blocks--; pool++; } if(d > 0 && pool > 0){ c.blocks++; pool--; }
+      var key = b.getAttribute('data-c') + b.getAttribute('data-d'); render(); var again = stage.querySelector('[data-c="' + key.slice(0,2) + '"][data-d="' + key.slice(2) + '"]'); if(again && !again.disabled) again.focus(); }
+    function step(){
+      t += 0.25;
+      if(t >= 12 && !ev1){ ev1 = true; msg = 'Uh oh: the retargeting audience is tapped out. Its cost per lead is climbing.'; camps[2].lo = 280; camps[2].hi = 340; }
+      if(t >= 20 && !ev2){ ev2 = true; msg = 'Good news: repair searches are spiking. Lead gen just got cheaper.'; camps[1].lo = 52; camps[1].hi = 70; }
+      camps.forEach(function(c){ var target = (c.lo + c.hi)/2; c.cpl += (target - c.cpl)*0.15 + (Math.random()-.5)*(c.hi - c.lo)*0.25; c.cpl = Math.max(c.lo*0.9, Math.min(c.hi*1.1, c.cpl));
+        var s = c.blocks * 10 * 0.25; c.spend += s; c.leads += s / c.cpl; });
+      if(t >= 30){ clearInterval(timer); timer = null; return finish(); }
+      var active = document.activeElement, key = active && active.getAttribute && active.getAttribute('data-c') ? active.getAttribute('data-c') + '|' + active.getAttribute('data-d') : null;
+      render();
+      if(key){ var k = key.split('|'), el = stage.querySelector('[data-c="' + k[0] + '"][data-d="' + k[1] + '"]'); if(el && !el.disabled) el.focus(); }
+    }
+    function start(){ render(); timer = setInterval(step, 250); var f = stage.querySelector('[data-c="aw"][data-d="-1"]'); if(f) f.focus(); }
+    function finish(){ var T = totals(), s = T.cpl < 100 ? 3 : (T.cpl < 150 ? 2 : 1); stage.removeEventListener('click', onClick); done(s, 'Blended cost per lead: ' + money(T.cpl) + ', with ' + T.l.toFixed(0) + ' leads. The client started at $211.'); }
+    intro();
+    return function(){ clearInterval(timer); stage.removeEventListener('click', onClick); };
+  }
+
+  /* ================= THURSDAY ================= */
+  function thursday(done){
+    var people = [
+      {n:'Priya N., HR Director', rel:'Sam led her company’s payroll system rollout in 2022.', ans:'sam', warm:true},
+      {n:'Marcus T., CFO', rel:'Met Jordan at an HR tech conference and grabbed coffee after.', ans:'jordan', warm:false},
+      {n:'Dana R., VP of People', rel:'Former client. Jordan ran her HCM selection project.', ans:'jordan', warm:true},
+      {n:'Unknown contact', rel:'Downloaded a whitepaper in 2021. Nobody on the team knows them.', ans:'skip'},
+      {n:'Leo K., implementation partner', rel:'Vendor partner. Sam has sent him three projects.', ans:'sam', warm:true},
+      {n:'Grace W., COO', rel:'Sam’s former colleague from a decade ago. Still trades holiday cards.', ans:'sam', warm:true},
+      {n:'A rival consulting firm', rel:'A direct competitor that somehow ended up in the CRM.', ans:'skip'},
+      {n:'Evan P., HR Ops Lead', rel:'Jordan co-presented with him on a webinar panel last spring.', ans:'jordan', warm:true}
+    ];
+    var i = 0, right = 0, booked = 0, timer = null, left = 0, LIM = 8;
+    function intro(){
+      setHud([]);
+      stage.innerHTML = '<h3>The dormant network</h3><p class="rules">An HR tech consulting firm has years of contacts sitting untouched in its CRM. You’re launching a referral email program. For each contact, choose who the email should come from, or skip the ones who shouldn’t get it at all. People open emails from people they know.</p><button class="btn dark-btn" id="go" type="button">Start Thursday</button>';
+      document.getElementById('go').onclick = next; document.getElementById('go').focus();
+    }
+    function next(){
+      if(i >= people.length) return finish();
+      var p = people[i]; left = LIM;
+      stage.innerHTML = '<div class="contact-card"><div class="rules" style="margin:0">Contact ' + (i+1) + ' of ' + people.length + '</div><div class="who">' + esc(p.n) + '</div><p style="margin:6px 0 0">' + esc(p.rel) + '</p><div class="timerbar"><div id="tb"></div></div></div>' +
+        '<div class="opts"><button class="opt" type="button" data-a="sam">Send from Sam, Managing Principal</button><button class="opt" type="button" data-a="jordan">Send from Jordan, Principal</button><button class="opt" type="button" data-a="inbox">Send from the company inbox</button><button class="opt" type="button" data-a="skip">Skip this contact</button></div><div class="feedback" id="fb" aria-live="polite"></div>';
+      var answered = false;
+      stage.querySelectorAll('.opt').forEach(function(b){ b.onclick = function(){ if(!answered){ answered = true; judge(b.getAttribute('data-a')); } }; });
+      stage.querySelector('.opt').focus();
+      function judge(a){
+        clearInterval(timer); var fb = document.getElementById('fb'), msg;
+        if(a === p.ans){ right++; if(p.ans === 'skip') msg = 'Good call. Not everyone in a CRM should get a referral ask.'; else if(p.warm){ booked++; msg = 'They replied and booked a meeting!'; } else msg = 'Opened it and replied warmly. Not a meeting yet, but the door’s open.'; }
+        else if(a === 'inbox') msg = 'Ignored. Nobody opens a referral ask from an info@ address.';
+        else if(a === 'skip') msg = 'Skipped someone with a real relationship. That was a warm lead.';
+        else if(p.ans === 'skip') msg = 'Yikes. That one should never have gotten the email.';
+        else msg = 'Wrong sender. They don’t really know that person, so it read as cold outreach.';
+        fb.textContent = msg; setHud([{t:'Meetings booked ' + booked},{t:'Right calls ' + right + '/' + (i+1)}]);
+        setTimeout(function(){ i++; next(); }, 1700);
+      }
+      timer = setInterval(function(){ left -= 0.1; var tb = document.getElementById('tb'); if(tb) tb.style.width = Math.max(0, left/LIM*100) + '%'; if(left <= 0){ answered = true; clearInterval(timer); document.getElementById('fb').textContent = 'Too slow. That contact sat in the CRM another quarter.'; setTimeout(function(){ i++; next(); }, 1500); } }, 100);
+      setHud([{t:'Meetings booked ' + booked},{t:'Right calls ' + right + '/' + i}]);
+    }
+    function finish(){ var s = right >= 8 ? 3 : (right >= 6 ? 2 : 1); done(s, 'You made ' + right + ' of 8 right calls and booked ' + booked + ' meetings.'); }
+    intro();
+    return function(){ clearInterval(timer); };
+  }
+
+  /* ================= FRIDAY ================= */
+  function friday(done){
+    var turns = [
+      {them:'We caught ANOTHER error in your report before you did. Honestly, why are we paying you?', opts:[
+        ['That’s on us. Here’s exactly what went wrong, why it happened, and what we’re changing so it doesn’t happen again.', 25, 'Their shoulders drop a little. They appreciate you owning it.'],
+        ['Our team followed the standard process, so this really shouldn’t have happened.', -15, 'They hear “not our fault.” Trust takes a hit.'],
+        ['Thanks for flagging! We’ll look into it.', -5, 'They’ve heard that before. Nothing changes.']]},
+      {them:'I don’t even know what your reports are telling me half the time.', opts:[
+        ['Totally fair. Starting this week, every report leads with three things: what happened, why, and what we’re doing next.', 25, 'That’s the first clear answer they’ve gotten in weeks.'],
+        ['Everything’s in the dashboard if you scroll down to the conversion section.', -15, 'Pointing them to a dashboard is the opposite of what they asked for.'],
+        ['We can definitely set up a call to walk through it sometime.', -5, '“Sometime” isn’t a plan.']]},
+      {them:'How do I know these ads are actually making us money?', opts:[
+        ['Let’s check it against your own revenue report, not just our numbers. If the ROI is real, you should be able to verify it yourself.', 25, 'Now they don’t have to take your word for it.'],
+        ['Our platform data shows strong performance across the board.', -15, 'Your numbers grading your own work? They’re not convinced.'],
+        ['Brand awareness is hard to measure, but it’s definitely working.', -5, 'Vague. Their eyebrows go up.']]},
+      {them:'Okay. So what happens next?', opts:[
+        ['Weekly syncs, a Friday update in your inbox, and nothing goes live without your approval. You won’t be surprised again.', 25, 'They actually say thank you.'],
+        ['We’ll keep doing what we’re doing. It just takes time.', -15, 'That’s what they were worried you’d say.'],
+        ['We’ll stay in touch and keep you posted!', -5, 'Friendly, but not reassuring.']]}
+    ];
+    var k = 0, trust = 20, log = [];
+    function face(){ return trust >= 80 ? '😊' : (trust >= 55 ? '🙂' : (trust >= 35 ? '😐' : '😠')); }
+    function intro(){
+      setHud([]);
+      stage.innerHTML = '<h3>The escalation</h3><p class="rules">Boss level. A frustrated client just called, and trust is at an all-time low. Four messages, four replies. Pick the response that actually rebuilds trust. No timer, just judgment.</p><button class="btn dark-btn" id="go" type="button">Start Friday</button>';
+      document.getElementById('go').onclick = next; document.getElementById('go').focus();
+    }
+    function next(){
+      if(k >= turns.length) return finish();
+      var T = turns[k]; log.push({who:'them', t:T.them});
+      draw(T);
+    }
+    function draw(T){
+      var opts = T ? shuffle(T.opts) : [];
+      stage.innerHTML = '<div class="trust"><span style="font-size:28px" aria-hidden="true">' + face() + '</span><span>Client trust</span><div class="bar"><div style="width:' + trust + '%"></div></div><span>' + trust + '%</span></div>' +
+        '<div class="chat">' + log.map(function(m){ return '<div class="bubble ' + m.who + '">' + esc(m.t) + '</div>'; }).join('') + '</div>' +
+        (T ? opts.map(function(o, i){ return '<button type="button" class="reply" data-i="' + i + '">' + esc(o[0]) + '</button>'; }).join('') : '') + '<div class="feedback" id="fb" aria-live="polite"></div>';
+      setHud([{t:'Message ' + Math.min(k+1, 4) + ' of 4'},{t:'Trust ' + trust + '%', warn: trust < 35}]);
+      if(!T) return;
+      var picked = false;
+      stage.querySelectorAll('.reply').forEach(function(b){ b.onclick = function(){ if(picked) return; picked = true; var o = opts[+b.getAttribute('data-i')];
+        trust = Math.max(0, Math.min(100, trust + o[1])); log.push({who:'me', t:o[0]}); log.push({who:'them', t:o[2]}); k++; draw(null);
+        setTimeout(next, 1500); }; });
+      stage.querySelector('.reply').focus();
+    }
+    function finish(){ var s = trust >= 80 ? 3 : (trust >= 55 ? 2 : 1); done(s, 'You ended the week at ' + trust + '% client trust. ' + (trust >= 80 ? 'That account is staying.' : 'It’s shaky, but salvageable.')); }
+    intro();
+    return function(){};
+  }
+
+  /* ================= week data ================= */
+  var DAYS = [
+    {id:'mon', day:'Monday', color:'#5AA9FF', title:'Catch it before the client does', pitch:'Three reports, three hidden mistakes, one timer.', play:monday,
+     real:{lbl:'What actually happened', num:'30', unit:'leads off in a client report, caught before it went out', text:'This one’s real. I caught a lead count that was off by 30 before it ever reached the client. Small catches like that are how trust actually gets built.'}},
+    {id:'tue', day:'Tuesday', color:'#3DDC97', title:'The diagnosis', pitch:'Block the junk searches, unblock the good ones, fix the account.', play:tuesday,
+     real:{lbl:'What actually happened', num:'−88%', unit:'cost per conversion, June to September', text:'A plumbing company was paying $706 per conversion. Digging in with our paid team traced it to a negative keyword setting quietly blocking good traffic. By September it was $86, with conversions up from 4 to 27 on less spend.'}},
+    {id:'wed', day:'Wednesday', color:'#FFD23F', title:'The fast pivot', pitch:'Ten budget blocks. Move the money before it’s wasted.', play:wednesday,
+     real:{lbl:'What actually happened', num:'$211 to $64', unit:'cost per conversion, in one month', text:'Awareness ads were running about $500 a lead. I moved budget into lead gen running closer to $73 and built a scorecard around what the owner actually cared about. Conversions went from 12 to 39 on the same budget.'}},
+    {id:'thu', day:'Thursday', color:'#FF4F8B', title:'The dormant network', pitch:'Wake up a sleepy CRM. Pick the right sender every time.', play:thursday,
+     real:{lbl:'What actually happened', num:'13 meetings', unit:'booked from a 190-person list', text:'I built a referral program in GoHighLevel for an HR technology consulting firm, with every email sent from the person who actually held the relationship. First cycle: a 39.7% open rate, a 6.35% click rate, and 6.8% of the list booked a meeting.'}},
+    {id:'fri', day:'Friday', color:'#8E6CFF', title:'The escalation', pitch:'Boss level. An upset client, four messages, one shot at trust.', play:friday,
+     real:{lbl:'What actually happened', num:'4.6x', unit:'return on ad spend the next quarter', text:'An account escalated with trust at an all-time low. Weekly syncs, Friday updates, creative pre-approval, and reporting rebuilt around problem, cause and solution. The next quarter closed at 4.6x return on ad spend, and the quarterly review opened next year’s budget planning.'}}
+  ];
+
+  function renderWeek(){
+    var total = 0, played = 0;
+    document.getElementById('week').innerHTML = DAYS.map(function(d){
+      var s = best[d.id] || 0; total += s; if(s) played++;
+      return '<article class="day"><span class="dname" style="background:' + d.color + '">' + d.day + '</span><h2>' + esc(d.title) + '</h2><p>' + esc(d.pitch) + '</p><div class="stars" aria-label="' + s + ' of 3 stars">' + starStr(s) + '</div><button class="btn" type="button" data-play="' + d.id + '">' + (s ? 'Play again' : 'Play ' + d.day) + '</button></article>';
+    }).join('');
+    document.getElementById('tally').textContent = total + ' / 15';
+    var wk = document.getElementById('weekend');
+    if(played >= 3) wk.innerHTML = '<div><h2>Weekend unlocked! ' + total + ' stars this week.</h2><p>You just survived a week in my shoes, and every game was a real week at my job. The numbers were real too. Want the real thing on your team? Would love to connect!</p></div><div class="row"><a class="btn sun" href="mailto:melissa.a.rodier@gmail.com">Email Melissa</a><a class="btn" href="https://linkedin.com/in/melissa-rodier" target="_blank" rel="noopener">LinkedIn</a></div>';
+    else wk.innerHTML = '<div><h2>The weekend is locked</h2><p>Play any three days to unlock it. Or if you’re short on time, the quick version has every story in plain text. Either way, I’d love to hear from you.</p></div><div class="row"><button class="btn ghost" type="button" id="quick2">Quick version</button><a class="btn sun" href="mailto:melissa.a.rodier@gmail.com">Email Melissa</a></div>';
+    var q2 = document.getElementById('quick2'); if(q2) q2.onclick = openQuick;
+  }
+  document.getElementById('week').addEventListener('click', function(e){ var b = e.target.closest('[data-play]'); if(b) openGame(b.getAttribute('data-play')); });
+
+  function openGame(id){
+    var d = DAYS.filter(function(x){ return x.id === id; })[0];
+    lastFocus = document.activeElement; modal.hidden = false; document.body.style.overflow = 'hidden';
+    winTitle.textContent = d.day + ': ' + d.title;
+    if(cleanup) cleanup();
+    cleanup = d.play(function(stars, summary){ showResult(d, stars, summary); });
+  }
+  function showResult(d, stars, summary){
+    if(cleanup){ cleanup(); cleanup = null; }
+    if(stars > (best[d.id] || 0)){ best[d.id] = stars; saveBest(); }
+    var idx = DAYS.indexOf(d), nxt = DAYS[idx+1];
+    setHud([{t:d.day + ' complete'}]);
+    stage.innerHTML = '<div class="result"><div class="stars" aria-label="' + stars + ' of 3 stars">' + starStr(stars) + '</div><h3>' + esc(summary) + '</h3>' +
+      '<div class="real"><span class="lbl">' + esc(d.real.lbl) + '</span><span class="num">' + esc(d.real.num) + '</span><span class="rules" style="margin:0">' + esc(d.real.unit) + '</span><p style="margin:6px 0 0">' + esc(d.real.text) + '</p></div>' +
+      '<div class="row">' + (nxt ? '<button class="btn dark-btn" type="button" id="nextBtn">On to ' + nxt.day + '</button>' : '<button class="btn sun" type="button" id="weekBtn">See your week</button>') +
+      '<button class="btn" type="button" id="againBtn" style="box-shadow:inset 0 0 0 2px var(--ink)">Play again</button><a class="btn pink" href="mailto:melissa.a.rodier@gmail.com">Email Melissa</a></div></div>';
+    var nb = document.getElementById('nextBtn'); if(nb){ nb.onclick = function(){ openGame(nxt.id); }; nb.focus(); }
+    var wb = document.getElementById('weekBtn'); if(wb){ wb.onclick = closeGame; wb.focus(); }
+    document.getElementById('againBtn').onclick = function(){ openGame(d.id); };
+    renderWeek();
+  }
+  function closeGame(){ if(cleanup){ cleanup(); cleanup = null; } modal.hidden = true; document.body.style.overflow = ''; stage.innerHTML = ''; renderWeek(); if(lastFocus && lastFocus.focus) lastFocus.focus(); }
+  document.getElementById('closeBtn').onclick = closeGame;
+  window.addEventListener('keydown', function(e){ if(e.key === 'Escape' && !modal.hidden) closeGame(); });
+
+  /* ================= quick version ================= */
+  function openQuick(){
+    lastFocus = document.activeElement; if(cleanup){ cleanup(); cleanup = null; }
+    modal.hidden = false; document.body.style.overflow = 'hidden'; winTitle.textContent = 'The quick version'; setHud([]);
+    stage.innerHTML = '<div class="quick"><h3>Melissa Rodier, no games required</h3><p class="rules">10 years in B2B marketing and client success. Right now I run a book of 25+ client brands worth about $480K a year, with $1.5M+ in annual client ad spend.</p>' +
+      DAYS.map(function(d){ return '<div class="item"><b>' + esc(d.title) + '</b><div class="big" style="font-size:1.6rem;margin:6px 0">' + esc(d.real.num) + ' <span class="rules" style="font-family:var(--body);font-size:16px;font-weight:400">' + esc(d.real.unit) + '</span></div><p style="margin:0">' + esc(d.real.text) + '</p></div>'; }).join('') +
+      '<div class="item"><b>The path here</b><p style="margin:6px 0 0">beMarketing Solutions, Senior Account Manager (2025 to now). Destiny Marketing Solutions, Client Success Lead and Digital Marketing Strategist (2023 to 2025). Freelance Digital Marketing Consultant (2022 to 2025). Dutch Label Shop, Marketing Operations Manager (2020 to 2022). LeagueSide, Campaign Strategist and Operations Manager (2018 to 2019). Woden, Account Manager (2016 to 2017).</p></div>' +
+      '<div class="item"><b>Let’s talk</b><p style="margin:6px 0 12px">Would love to connect! melissa.a.rodier@gmail.com</p><div class="row"><a class="btn sun" href="mailto:melissa.a.rodier@gmail.com">Email me</a><a class="btn" style="box-shadow:inset 0 0 0 2px var(--ink)" href="https://linkedin.com/in/melissa-rodier" target="_blank" rel="noopener">LinkedIn</a></div></div></div>';
+    document.getElementById('closeBtn').focus();
+  }
+  document.getElementById('quickBtn').onclick = openQuick;
+
+  renderWeek();
+  if(location.hash.replace('#','') === 'quick') openQuick();
+})();
+</script>
+</body>
+</html>
