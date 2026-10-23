@@ -180,6 +180,7 @@ footer{margin-top:56px;color:var(--on-desk-muted);font-size:15px}
     <div class="brand">Melissa Rodier<span>Client Success and Growth Marketing, Philadelphia</span></div>
     <div class="actions">
       <button class="btn ghost" id="quickBtn" type="button">Skip to the quick version</button>
+      <a class="btn ghost" href="https://melissa-rodier.github.io/play-my-resume/" title="A card game built from my career">Play My Resume</a>
       <a class="btn sun" href="mailto:melissa.a.rodier@gmail.com">Email me</a>
       <a class="btn" href="https://linkedin.com/in/melissa-rodier" target="_blank" rel="noopener">LinkedIn</a>
     </div>
@@ -502,7 +503,7 @@ footer{margin-top:56px;color:var(--on-desk-muted);font-size:15px}
     }).join('');
     document.getElementById('tally').textContent = total + ' / 15';
     var wk = document.getElementById('weekend');
-    if(played >= 3) wk.innerHTML = '<div><h2>Weekend unlocked! ' + total + ' stars this week.</h2><p>You just survived a week in my shoes, and every game was a real week at my job. The numbers were real too. Want the real thing on your team? Would love to connect!</p></div><div class="row"><a class="btn sun" href="mailto:melissa.a.rodier@gmail.com">Email Melissa</a><a class="btn" href="https://linkedin.com/in/melissa-rodier" target="_blank" rel="noopener">LinkedIn</a></div>';
+    if(played >= 3) wk.innerHTML = '<div><h2>Weekend unlocked! ' + total + ' stars this week.</h2><p>You just survived a week in my shoes, and every game was a real week at my job. The numbers were real too. Want the real thing on your team? Would love to connect!</p></div><div class="row"><a class="btn sun" href="mailto:melissa.a.rodier@gmail.com">Email Melissa</a><a class="btn" href="https://linkedin.com/in/melissa-rodier" target="_blank" rel="noopener">LinkedIn</a><a class="btn ghost" href="https://melissa-rodier.github.io/play-my-resume/">Bonus round: Play My Resume</a></div>';
     else wk.innerHTML = '<div><h2>The weekend is locked</h2><p>Play any three days to unlock it. Or if you’re short on time, the quick version has every story in plain text. Either way, I’d love to hear from you.</p></div><div class="row"><button class="btn ghost" type="button" id="quick2">Quick version</button><a class="btn sun" href="mailto:melissa.a.rodier@gmail.com">Email Melissa</a></div>';
     var q2 = document.getElementById('quick2'); if(q2) q2.onclick = openQuick;
   }
